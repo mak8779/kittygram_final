@@ -12,18 +12,21 @@ services:
     volumes:
       - pg_data:/var/lib/postgresql/data
   backend:
+    image: mak8779/kittygram_backend
     build: ./backend/
     env_file: .env
     volumes:
       - static:/backend_static
       - user_uploads:/uploads
   frontend:
+    image: mak8779/kittygram_frontend
     env_file: .env
     build: ./frontend/
     command: cp -r /app/build/. /static/
     volumes:
       - static:/frontend_static
   gateway:
+    image: mak8779/kittygram_gateway
     build: ./nginx/
     env_file: .env
     ports:
