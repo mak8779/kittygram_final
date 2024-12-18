@@ -27,7 +27,6 @@ services:
       - static:/frontend_static
   gateway:
     image: mak8779/kittygram_gateway
-    build: ./nginx/
     env_file: .env
     ports:
       - 9000:80
